@@ -18,7 +18,6 @@ label = Label(weather, image=bg)
 label.pack()
 
 weather.geometry("1000x600")
-#weather.configure(bg="#0071c5")
 weather.resizable(False, False)
 
 def getweather():
@@ -57,50 +56,79 @@ def getweather():
     p.config(text=(pressure, "hpa"))
     d.config(text=desc)
 
-    #first cell
-    #firstdayimage = json_data['daily'][0]['weather'][0]['icon']
 
-    #second cell
-    #seconddayimage = json_data['daily'][1]['weather'][0]['icon']
+#days
 
-    #third cell
-    #thirddayimage = json_data['daily'][2]['weather'][0]['icon']
-
-    #fourth   cell
-    fourthdayimage = json_data['daily'][3]['weather'][0]['icon']
-
-    #fifth cell
-    #fifthdayimage = json_data['daily'][4]['weather'][0]['icon']
-
-    #sixth cell
-    #sixthdayimage = json_data['daily'][5]['weather'][0]['icon']
-
-    #seventh cell
-   # seventhdayimage = json_data['daily'][6]['weather'][0]['icon']
-
-    #days
     first = datetime.now()
-    day1.config(text=day1.strftime("%A"))
+    day1.config(text = first.strftime("%A"))
+    #day1.config(text=day1.strftime("%A"))
 
-    second = first+timedelta(days=1)
+    second = datetime.now()+timedelta(days=1)
     day2.config(text=second.strftime("%A"))
 
-    third = first + timedelta(days=1)
+    # third = first + timedelta(days=1)
+    third = datetime.now()+timedelta(days=2)
     day3.config(text=third.strftime("%A"))
 
-    fourth = first + timedelta(days=1)
+    fourth = datetime.now()+timedelta(days=3)
     day4.config(text=fourth.strftime("%A"))
 
-    fifth = first + timedelta(days=1)
+    fifth = datetime.now()+timedelta(days=4)
     day5.config(text=fifth.strftime("%A"))
 
-    sixth = first + timedelta(days=1)
+    sixth = datetime.now()+timedelta(days=5)
     day6.config(text=sixth.strftime("%A"))
 
-    seventh = first + timedelta(days=1)
+    seventh = datetime.now()+timedelta(days=6)
     day7.config(text=seventh.strftime("%A"))
 
+#daily icon
 
+    #first cell
+    day1Image = json_data['weather'][0]['icon']
+    img1 = ImageTk.PhotoImage(file=f"weatherIcons/{day1Image}@2x.png")
+    firstImage.config(image=img1)
+    firstImage.image = img1
+
+    #second cell
+    day2Image = json_data['weather'][0]['icon']
+    img2 = ImageTk.PhotoImage(file=f"weatherIcons/{day2Image}@2x.png")
+    secondImage.config(image=img2)
+    secondImage.image = img2
+
+    #third cell
+    day3Image = json_data['weather'][0]['icon']
+    img3 = ImageTk.PhotoImage(file=f"weatherIcons/{day3Image}@2x.png")
+    thirdImage.config(image=img3)
+    thirdImage.image = img3
+
+    #fourth   cell
+    day4Image = json_data['weather'][0]['icon']
+    img4 = ImageTk.PhotoImage(file=f"weatherIcons/{day4Image}@2x.png")
+    fourthImage.config(image=img4)
+    fourthImage.image = img4
+
+    #fifth cell
+    day5Image = json_data['weather'][0]['icon']
+    img5 = ImageTk.PhotoImage(file = f"weatherIcons/{day5Image}@2x.png")
+    fifthImage.config(image=img5)
+    fifthImage.image=img5
+
+    #sixth cell
+    day6Image = json_data['weather'][0]['icon']
+    img6 = ImageTk.PhotoImage(file=f"weatherIcons/{day6Image}@2x.png")
+    sixthImage.config(image=img6)
+    sixthImage.image=img6
+
+    #seventh cell
+    day7Image = json_data['weather'][0]['icon']
+    img7 = ImageTk.PhotoImage(file=f"weatherIcons/{day7Image}@2x.png")
+    seventhImage.config(image=img7)
+    seventhImage.image=img7
+
+# logo icon
+logo_icon = ImageTk.PhotoImage(Image.open("images/logo.png"))
+weather.iconphoto(False, logo_icon)
 
 # search field
 #oval_icon = ImageTk.PhotoImage(Image.open("images/11.jpeg"))
@@ -121,15 +149,15 @@ box.place(x=30, y=210)
 
 # Label1
 Label1 = Label(weather, text="Wind speed", font=("Helvetica", 15, 'bold'), fg="white", bg="#72A0C1")
-Label1.place(x=60, y=230)
+Label1.place(x=50, y=230)
 Label2 = Label(weather, text="Temperature", font=("Helvetica", 15, 'bold'), fg="white", bg="#72A0C1")
-Label2.place(x=60, y=250)
+Label2.place(x=50, y=250)
 Label3 = Label(weather, text="Humidity", font=("Helvetica", 15, 'bold'), fg="white", bg="#72A0C1")
-Label3.place(x=60, y=270)
+Label3.place(x=50, y=270)
 Label4 = Label(weather, text="Pressure", font=("Helvetica", 15, 'bold'), fg="white", bg="#72A0C1")
-Label4.place(x=60, y=290)
+Label4.place(x=50, y=290)
 Label4 = Label(weather, text="Description", font=("Helvetica", 15, 'bold'), fg="white", bg="#72A0C1")
-Label4.place(x=60, y=310)
+Label4.place(x=50, y=310)
 
 #timezone
 timezone = Label(weather, font=("Helvetica", 20), fg="white", bg="#142b44")
@@ -158,71 +186,74 @@ d.place(x=200, y=310)
 firstbox = Frame(weather, width=180, height=130, highlightthickness=1, bg="#72a0c1")
 firstbox.place(x=20, y=450)
 
-day1 = Label(firstbox,text="day1", font=("arial", 20), bg="#72A0C1", fg="white")
-day1.place(x=10, y=15)
-
 firstImage = Label(firstbox, bg="#72A0C1")
 firstImage.place(x=4, y=15)
+
+day1 = Label(firstbox, font=("arial", 18), bg="#72A0C1", fg="white")
+day1.place(x=2, y=12)
 
 #second cell
 secondbox = Frame(weather, width=110, height=130, highlightthickness=1,  bg="#72A0C1")
 secondbox.place(x=220, y=450)
 
-day2 = Label(secondbox, font=("arial", 20), bg="#72A0C1", fg="white")
-day2.place(x=10, y=15)
-
 secondImage = Label(secondbox, bg="#72A0C1")
 secondImage.place(x=4, y=15)
+
+day2 = Label(secondbox, font=("arial", 18), bg="#72A0C1", fg="white")
+day2.place(x=2, y=12)
 
 #third cell
 thirdbox = Frame(weather, width=120, height=130, highlightthickness=1, bg="#72A0C1")
 thirdbox.place(x=350, y=450)
 
 thirdImage = Label(thirdbox, bg="#72A0C1")
-thirdImage.place(x=4, y=15)
+thirdImage.place(x=4, y=20)
 
-day3 = Label(thirdbox, font=("arial", 20), bg="#72A0C1", fg="white")
-day3.place(x=10, y=15)
+day3 = Label(thirdbox, font=("arial", 18), bg="#72A0C1", fg="white")
+day3.place(x=1, y=12)
 
 
 #fourth cell
 fourthbox = Frame(weather, width=110, height=130, highlightthickness=1, bg="#72A0C1")
 fourthbox.place(x=490, y=450)
 
-day4 = Label(fourthbox, font=("arial", 20), bg="#72A0C1", fg="white")
-day4.place(x=10, y=15)
-
 fourthImage = Label(fourthbox, bg="#72A0C1")
 fourthImage.place(x=4, y=15)
+
+day4 = Label(fourthbox, font=("arial", 18), bg="#72A0C1", fg="white")
+day4.place(x=2, y=12)
+
 
 #fifth cell
 fifthbox = Frame(weather, width=110, height=130, highlightthickness=1, bg="#72A0C1")
 fifthbox.place(x=620, y=450)
 
-day5 = Label(fifthbox, font=("arial", 20), bg="#72A0C1", fg="white")
-day5.place(x=10, y=15)
 
 fifthImage = Label(fifthbox, bg="#72A0C1")
 fifthImage.place(x=4, y=15)
+
+day5 = Label(fifthbox, font=("arial", 18), bg="#72A0C1", fg="white")
+day5.place(x=2, y=12)
 
 #sixth cell
 sixthbox = Frame(weather, width=110, height=130, highlightthickness=1, bg="#72A0C1")
 sixthbox.place(x=750, y=450)
 
-day6 = Label(sixthbox, font=("arial", 20), bg="#72A0C1", fg="white")
-day6.place(x=10, y=15)
-
 sixthImage = Label(sixthbox, bg="#72A0C1")
 sixthImage.place(x=4, y=15)
+
+day6 = Label(sixthbox, font=("arial", 18), bg="#72A0C1", fg="white")
+day6.place(x=2, y=12)
+
 
 #seventh cell
 seventhbox = Frame(weather, width=110, height=130, highlightthickness=1, highlightcolor="red", background="#0093AF", bg="#72A0C1")
 seventhbox.place(x=880, y=450)
 
-day7 = Label(seventhbox, font=("arial", 20), bg="#72A0C1", fg="white")
-day7.place(x=10, y=15)
-
 seventhImage = Label(seventhbox, bg="#72A0C1")
 seventhImage.place(x=4, y=15)
+
+day7 = Label(seventhbox, font=("arial", 18), bg="#72A0C1", fg="white")
+day7.place(x=2, y=12)
 
 weather.mainloop()
