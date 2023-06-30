@@ -38,8 +38,7 @@ def getweather():
     clock.config(text=current_time)
 
     #weather
-    #url = "https://api.openweathermap.org/data/2.5/onecall?lat="+str(location.latitude)+"&lon="+str(location.longitude)+"&units=metric&exclude=hourly&appid=a249f3b30a2bdb61fe5ac47c6e8ce7c1"
-    url = "https://api.openweathermap.org/data/2.5/weather?lat="+str(location.latitude)+"&lon="+str(location.longitude)+"&appid=a249f3b30a2bdb61fe5ac47c6e8ce7c1"
+    url = "https://api.openweathermap.org/data/2.5/weather?lat="+str(location.latitude)+"&lon="+str(location.longitude)+"&appid=YOUR OWM API KEY"
     json_data =requests.get(url).json()
     print(json_data)
 
